@@ -5,5 +5,7 @@
       "destination": "/index.html"
     }
   ],
-  "comment": "force rebuild"
+  "github": {
+    "silent": true
+  }
 }
