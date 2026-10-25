@@ -1,0 +1,1 @@
+export default { content: ["./index.html", "./src/**/*.{ts,tsx}"], theme: { extend: { colors: { navy: { 900: "#0a0f1e", 800: "#0f172a", 700: "#1e293b" }, nexus: { teal: "#14b8a6", cyan: "#06b6d4" } }, fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] } } }, plugins: [] };
