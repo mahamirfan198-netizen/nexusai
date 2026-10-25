@@ -15,6 +15,17 @@ app.add_middleware(
 )
 
 Base.metadata.create_all(bind=engine)
+# Auto-seed demo data for Vercel
+from app.database import SessionLocal
+from app.models import User
+from app.core.security import hash_password
+db = SessionLocal()
+if not db.query(User).first():
+    db.add(User(email="demo_education@nexusai.com", hashed_password=hash_password("demo1234"), full_name="Demo Education User", roles="student", active_portal="education"))
+    db.add(User(email="demo_business@nexusai.com", hashed_password=hash_password("demo1234"), full_name="Demo Business User", roles="business_manager", active_portal="business"))
+    db.add(User(email="demo_instructor@nexusai.com", hashed_password=hash_password("demo1234"), full_name="Demo Instructor User", roles="teacher,education_admin", active_portal="education"))
+    db.commit()
+db.close()
 
 app.include_router(auth.router)
 app.include_router(users.router)
